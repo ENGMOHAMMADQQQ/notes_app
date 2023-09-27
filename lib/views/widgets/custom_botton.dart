@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 
 class CustomBotton extends StatelessWidget {
-  const CustomBotton({super.key, this.onTap});
+  const CustomBotton({super.key, this.onTap,  this.isLoding =false});
   final void Function()? onTap;
+  final bool isLoding;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,8 +17,14 @@ class CustomBotton extends StatelessWidget {
           color: kPrimaryColor,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
-          child: Text(
+        child:  Center(
+          child: isLoding ?const SizedBox(
+            height: 24,
+            width: 24,
+            child: CircularProgressIndicator(
+              color: Colors.black,
+            ),
+          ) :const Text(
             'Add',
             style: TextStyle(
                 color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
